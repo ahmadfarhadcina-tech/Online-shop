@@ -1,140 +1,199 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Online Shop</title>
-<link rel="stylesheet" href="style.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فروشگاه آنلاین | Online Shop</title>
+    <!-- استفاده از فونت وزیرمتن برای زیبایی متن‌ها -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            line-height: 1.6;
+        }
+        /* منوی ناوبری شیک */
+        nav {
+            background: #1e293b;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+        .nav-links {
+            display: flex;
+            gap: 15px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+        /* بخش هدر یا بنر خوش‌آمدگویی */
+        .hero {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border-bottom: 1px solid #334155;
+        }
+        .hero h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #f1f5f9;
+        }
+        .hero p {
+            color: #94a3b8;
+            font-size: 14px;
+        }
+        /* محوطه محصولات */
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+        .section-title {
+            font-size: 18px;
+            margin-bottom: 15px;
+            border-right: 4px solid #38bdf8;
+            padding-right: 10px;
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .product-card {
+            background: #1e293b;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            border: 1px solid #334155;
+            transition: transform 0.2s;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        .product-img {
+            width: 100%;
+            height: 180px;
+            background: #334155;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 14px;
+        }
+        .product-info {
+            padding: 15px;
+        }
+        .product-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .product-price {
+            color: #38bdf8;
+            font-weight: bold;
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+        .buy-btn {
+            display: block;
+            width: 100%;
+            background: #25d366;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+        .buy-btn:hover {
+            background: #20ba5a;
+        }
+        /* فوتر سایت */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #1e293b;
+            color: #64748b;
+            font-size: 13px;
+            margin-top: 40px;
+            border-top: 1px solid #334155;
+        }
+    </style>
 </head>
-
 <body>
 
-<header>
+    <!-- منوی ناوبری -->
+    <nav>
+        <div class="logo">فروشگاه من</div>
+        <ul class="nav-links">
+            <li><a href="index.html">صفحه اصلی</a></li>
+            <li><a href="#products">محصولات</a></li>
+            <li><a href="https://wa.me/93775667688" target="_blank">ارتباط با ما</a></li>
+        </ul>
+    </nav>
 
-<div class="logo">
-🛍️ Online Shop
-</div>
+    <!-- بخش بنر اصلی -->
+    <div class="hero">
+        <h1>به فروشگاه آنلاین ما خوش آمدید 👋</h1>
+        <p>بهترین و باکیفیت‌ترین اجناس با مناسب‌ترین قیمت</p>
+    </div>
 
-<nav>
-<a href="#">Home</a>
-<a href="#products">Products</a>
-<a href="#about">About</a>
-<a href="#contact">Contact</a>
-</nav>
+    <!-- بخش محصولات -->
+    <div class="container" id="products">
+        <h2 class="section-title">محصولات ویژه</h2>
+        
+        <div class="products-grid">
+            <!-- محصول اول -->
+            <div class="product-card">
+                <div class="product-img">تصویر محصول</div>
+                <div class="product-info">
+                    <div class="product-title">نام محصول اول</div>
+                    <div class="product-price">۵۰۰ افغانی</div>
+                    <a href="https://wa.me/93775667688?text=سلام،‌ می‌خواستم محصول (نام محصول اول) را سفارش دهم." class="buy-btn" target="_blank">سفارش در واتساپ</a>
+                </div>
+            </div>
 
-</header>
+            <!-- محصول دوم -->
+            <div class="product-card">
+                <div class="product-img">تصویر محصول</div>
+                <div class="product-info">
+                    <div class="product-title">نام محصول دوم</div>
+                    <div class="product-price">۸۰۰ افغانی</div>
+                    <a href="https://wa.me/93775667688?text=سلام،‌ می‌خواستم محصول (نام محصول دوم) را سفارش دهم." class="buy-btn" target="_blank">سفارش در واتساپ</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<section class="hero">
-
-<h1>Welcome to Online Shop</h1>
-
-<p>
-Discover quality products at affordable prices.
-Fast response, trusted service and friendly support.
-</p>
-
-<a href="#products" class="shop-btn">
-Browse Products
-</a>
-
-</section>
-
-<section id="products">
-
-<h2>Featured Products</h2>
-
-<div class="products">
-
-<div class="card">
-<img src="images/product1.jpg">
-<h3>Smartphone</h3>
-<p>$199</p>
-<button>Contact Seller</button>
-</div>
-
-<div class="card">
-<img src="images/product2.jpg">
-<h3>Wireless Headphones</h3>
-<p>$39</p>
-<button>Contact Seller</button>
-</div>
-
-<div class="card">
-<img src="images/product3.jpg">
-<h3>Smart Watch</h3>
-<p>$59</p>
-<button>Contact Seller</button>
-</div>
-
-<div class="card">
-<img src="images/product4.jpg">
-<h3>Laptop</h3>
-<p>$499</p>
-<button>Contact Seller</button>
-</div>
-
-</div>
-
-</section>
-
-<section id="about">
-
-<h2>About Us</h2>
-
-<p>
-
-Online Shop is a simple and trusted marketplace where you can find quality products with affordable prices.
-
-Contact us directly through WhatsApp, Telegram or Phone.
-
-</p>
-
-</section>
-
-<section id="contact">
-
-<h2>Contact Us</h2>
-
-<div class="contact-buttons">
-
-<a href="tel:+937XXXXXXXXX">
-📞 Phone
-</a>
-
-<a href="#">
-💬 WhatsApp
-</a>
-
-<a href="#">
-✈ Telegram
-</a>
-
-<a href="#">
-▶ YouTube
-</a>
-
-</div>
-
-</section>
-
-<footer>
-
-<p>
-
-© 2026 Online Shop
-
-<br>
-
-Quality • Trust • Fast Service
-
-</p>
-
-</footer>
-
-<script src="script.js"></script>
+    <!-- فوتر -->
+    <footer>
+        <p>تمامی حقوق محفوظ است | طراحی شده برای فروشگاه آنلاین شما</p>
+    </footer>
 
 </body>
 </html>
