@@ -107,31 +107,12 @@
             margin: 0 auto 25px auto;
         }
 
-        .btn-main {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 12px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(255, 71, 126, 0.4);
-            transition: 0.3s;
-            font-size: 14px;
-            margin-bottom: 25px;
-        }
-
-        .btn-main:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 71, 126, 0.6);
-        }
-
-        /* Quick Navigation Buttons (بدون دکمه contact) */
+        /* Quick Navigation Buttons (کمی بزرگ‌تر شده‌اند) */
         .quick-nav {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 12px;
+            gap: 15px;
             max-width: 700px;
             margin-top: 10px;
         }
@@ -140,124 +121,26 @@
             background: rgba(255, 71, 126, 0.1);
             color: var(--text-color);
             border: 1px solid rgba(255, 71, 126, 0.3);
-            padding: 8px 18px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 500;
+            padding: 12px 26px;
+            border-radius: 22px;
+            font-size: 15px;
+            font-weight: 600;
             text-decoration: none;
             transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .quick-btn:hover {
             background: var(--primary);
             color: white;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
             border-color: var(--primary);
         }
 
-        /* Container Layout */
-        .container {
-            width: 100%;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 50px 20px;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 26px;
-            margin-bottom: 35px;
-            font-weight: 600;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 3px;
-            background: var(--primary);
-            margin: 8px auto 0 auto;
-            border-radius: 2px;
-        }
-
-        /* Products Grid Cards */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 20px;
-            width: 100%;
-        }
-
-        .product-card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: 0.3s;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(255,71,126,0.3);
-        }
-
-        .product-img {
-            width: 100%;
-            height: 300px;
-            background: #252634;
-            overflow: hidden;
-        }
-
-        .product-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .product-details {
-            padding: 20px;
-        }
-
-        .product-title {
-            font-size: 17px;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .product-desc {
-            color: var(--text-muted);
-            font-size: 13px;
-            margin-bottom: 12px;
-        }
-
-        .product-price {
-            color: var(--primary);
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-
-        .order-btn {
-            display: block;
-            width: 100%;
-            background: #25d366;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-            transition: 0.3s;
-        }
-
-        .order-btn:hover {
-            background: #20ba5a;
-        }
-
-        /* Contact Section اضافه شده در پایین صفحه */
+        /* Contact Section در پایین صفحه */
         .contact-section {
             width: 100%;
             max-width: 800px;
@@ -336,49 +219,17 @@
         <h1>Welcome to <span>Elina Online Shop</span></h1>
         <p>Discover the finest products curated specially for you with top quality and modern style.</p>
 
-        <!-- دکمه‌های دسترسی سریع (بدون دکمه Contact) -->
+        <!-- دکمه‌های دسترسی سریع -->
         <div class="quick-nav">
             <a href="products.html" class="quick-btn"><i class="fa-solid fa-bag-shopping"></i> Products</a>
             <a href="creator.html" class="quick-btn"><i class="fa-solid fa-user-pen"></i> Creator</a>
         </div>
     </header>
 
-    <!-- Featured Recommendations (پیش‌نمایش‌ها) -->
-    <section class="container" id="recommendations">
-        <h2 class="section-title">Featured Recommendations</h2>
-        <div class="products-grid">
-            <!-- Product 1 -->
-            <div class="product-card">
-                <div class="product-img">
-                    <img src="pink-floral-dress.jpg" alt="Pink 3D Floral Maxi Dress">
-                </div>
-                <div class="product-details">
-                    <div class="product-title">Pink 3D Floral Maxi Dress</div>
-                    <div class="product-desc">Elegant long-sleeve pink maxi dress with stunning 3D floral appliques. Sizes: S, M, L, XL</div>
-                    <div class="product-price">2500 AFN</div>
-                    <a href="https://wa.me/93785738048?text=Hello,%20I%20want%20to%20order%20Pink%203D%20Floral%20Maxi%20Dress" class="order-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> Order via WhatsApp</a>
-                </div>
-            </div>
-
-            <!-- Product 2 -->
-            <div class="product-card">
-                <div class="product-img">
-                    <img src="white-lace-dress.jpg" alt="White Lace Elegant Dress">
-                </div>
-                <div class="product-details">
-                    <div class="product-title">White Lace Elegant Dress</div>
-                    <div class="product-desc">Sophisticated white lace dress with delicate sheer long sleeves. Sizes: S, M, L, XL</div>
-                    <div class="product-price">1900 AFN</div>
-                    <a href="https://wa.me/93785738048?text=Hello,%20I%20want%20to%20order%20White%20Lace%20Elegant%20Dress" class="order-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> Order via WhatsApp</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- بخش Contact در پایین صفحه قبل از فوتر -->
     <section class="contact-section" id="contact">
         <div class="contact-box">
-            <h2 class="section-title" style="margin-bottom: 15px;">Contact Us</h2>
+            <h2 style="font-size: 22px; margin-bottom: 15px; color: #fff;">Contact Us</h2>
             <p>Feel free to reach out to us through our social channels or WhatsApp for quick orders and inquiries.</p>
             <div class="social-icons">
                 <a href="https://www.instagram.com/_elina_online_shop?igsh=NnIxMmQ1dmpndDM4&utm_source=qr" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
