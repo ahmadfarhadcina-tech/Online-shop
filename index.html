@@ -34,7 +34,7 @@
             overflow-x: hidden;
         }
 
-        /* Navbar */
+        /* Navbar خلوت و حرفه‌ای */
         nav {
             background: rgba(26, 27, 37, 0.95);
             backdrop-filter: blur(10px);
@@ -59,21 +59,14 @@
 
         .nav-links {
             display: flex;
-            gap: 15px;
+            gap: 20px;
             list-style: none;
-            overflow-x: auto;
-            white-space: nowrap;
-            padding-bottom: 5px;
-        }
-
-        .nav-links::-webkit-scrollbar {
-            display: none;
         }
 
         .nav-links a {
             color: var(--text-color);
             text-decoration: none;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 500;
             transition: 0.3s;
         }
@@ -85,7 +78,7 @@
         /* Hero Section */
         .hero {
             width: 100%;
-            min-height: 70vh;
+            min-height: 80vh;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -124,11 +117,41 @@
             box-shadow: 0 4px 15px rgba(255, 71, 126, 0.4);
             transition: 0.3s;
             font-size: 14px;
+            margin-bottom: 25px;
         }
 
         .btn-main:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(255, 71, 126, 0.6);
+        }
+
+        /* Quick Navigation Buttons (دکمه‌های سریع زیر هیرو مثل سایت‌های مدرن) */
+        .quick-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            max-width: 700px;
+            margin-top: 10px;
+        }
+
+        .quick-btn {
+            background: rgba(255, 71, 126, 0.1);
+            color: var(--text-color);
+            border: 1px solid rgba(255, 71, 126, 0.3);
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .quick-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            border-color: var(--primary);
         }
 
         /* Container Layout */
@@ -247,16 +270,12 @@
 </head>
 <body>
 
-    <!-- Navbar -->
+    <!-- Navbar خلوت -->
     <nav>
         <a href="index.html" class="logo">Elina Shop</a>
         <ul class="nav-links">
             <li><a href="index.html" style="color: var(--primary);">Home</a></li>
             <li><a href="about.html">About</a></li>
-            <li><a href="recommendations.html">Recommendations</a></li>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="creator.html">Creator</a></li>
-            <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
 
@@ -264,7 +283,17 @@
     <header class="hero" id="home">
         <h1>Welcome to <span>Elina Online Shop</span></h1>
         <p>Discover the finest products curated specially for you with top quality and modern style.</p>
-        <a href="#recommendations" class="btn-main">Explore Collection</a>
+        
+        <!-- دکمه اصلی -->
+        <a href="recommendations.html" class="btn-main">Explore Collection</a>
+
+        <!-- دکمه‌های دسترسی سریع بخش‌های مختلف زیر هیرو -->
+        <div class="quick-nav">
+            <a href="products.html" class="quick-btn"><i class="fa-solid fa-bag-shopping"></i> Products</a>
+            <a href="recommendations.html" class="quick-btn"><i class="fa-solid fa-star"></i> Recommendations</a>
+            <a href="creator.html" class="quick-btn"><i class="fa-solid fa-user-pen"></i> Creator</a>
+            <a href="contact.html" class="quick-btn"><i class="fa-solid fa-headset"></i> Contact</a>
+        </div>
     </header>
 
     <!-- Featured Recommendations (پیش‌نمایش‌ها) -->
