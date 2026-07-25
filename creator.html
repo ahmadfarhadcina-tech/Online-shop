@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creator - Elina Online Shop</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #ff477e;
+            --secondary: #ff85a1;
+            --bg-dark: #0f1016;
+            --card-bg: #1a1b25;
+            --text-color: #f1f1f2;
+            --text-muted: #a0a0ab;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-color);
+            line-height: 1.6;
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Navbar خلوت و حرفه‌ای */
+        nav {
+            background: rgba(26, 27, 37, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 71, 126, 0.2);
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Creator Section Container */
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 50px 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 26px;
+            margin-bottom: 35px;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+            margin: 8px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        /* Creator Card */
+        .creator-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            width: 100%;
+        }
+
+        .creator-avatar {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+            box-shadow: 0 5px 20px rgba(255, 71, 126, 0.4);
+            margin: 0 auto 20px auto;
+            background: #252634;
+        }
+
+        .creator-name {
+            font-size: 22px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .creator-role {
+            color: var(--primary);
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .creator-bio {
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .social-icons a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255,71,126,0.1);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            text-decoration: none;
+            transition: 0.3s;
+            border: 1px solid rgba(255,71,126,0.3);
+        }
+
+        .social-icons a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #090a0f;
+            color: var(--text-muted);
+            font-size: 13px;
+            width: 100%;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar خلوت -->
+    <nav>
+        <a href="index.html" class="logo">Elina Shop</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Creator Section -->
+    <div class="container">
+        <h2 class="section-title">Meet The Creator</h2>
+        <div class="creator-card">
+            <!-- عکس پروفایل سازنده (کافی است نام عکستان را creator.jpg بگذارید و کنار این فایل قرار دهید) -->
+            <img src="creator.jpg" alt="Creator Profile Picture" class="creator-avatar">
+            <div class="creator-name">F. Cina</div>
+            <div class="creator-role">Founder & Developer</div>
+            <p class="creator-bio">
+                Welcome to Elina Online Shop! I am dedicated to bringing you the finest curated collections with modern style and top-notch quality. Built with passion and designed for a seamless mobile shopping experience.
+            </p>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/_elina_online_shop?igsh=NnIxMmQ1dmpndDM4&utm_source=qr" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://wa.me/93785738048" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Elina Online Shop. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
