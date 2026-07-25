@@ -31,6 +31,7 @@
             color: var(--text-color);
             line-height: 1.6;
             width: 100%;
+            max-width: 100vw;
             overflow-x: hidden;
         }
 
@@ -125,7 +126,7 @@
             box-shadow: 0 6px 20px rgba(255, 71, 126, 0.6);
         }
 
-        /* Quick Navigation Buttons (دکمه‌های سریع زیر هیرو مثل سایت‌های مدرن) */
+        /* Quick Navigation Buttons (بدون دکمه contact) */
         .quick-nav {
             display: flex;
             flex-wrap: wrap;
@@ -256,6 +257,57 @@
             background: #20ba5a;
         }
 
+        /* Contact Section اضافه شده در پایین صفحه */
+        .contact-section {
+            width: 100%;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .contact-box {
+            background: var(--card-bg);
+            padding: 35px 25px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .contact-box p {
+            color: var(--text-muted);
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255,71,126,0.1);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            text-decoration: none;
+            transition: 0.3s;
+            border: 1px solid rgba(255,71,126,0.3);
+        }
+
+        .social-icons a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
         /* Footer */
         footer {
             text-align: center;
@@ -264,7 +316,7 @@
             color: var(--text-muted);
             font-size: 13px;
             width: 100%;
-            margin-top: 50px;
+            margin-top: 30px;
         }
     </style>
 </head>
@@ -287,12 +339,11 @@
         <!-- دکمه اصلی -->
         <a href="recommendations.html" class="btn-main">Explore Collection</a>
 
-        <!-- دکمه‌های دسترسی سریع بخش‌های مختلف زیر هیرو -->
+        <!-- دکمه‌های دسترسی سریع (بدون دکمه Contact) -->
         <div class="quick-nav">
             <a href="products.html" class="quick-btn"><i class="fa-solid fa-bag-shopping"></i> Products</a>
             <a href="recommendations.html" class="quick-btn"><i class="fa-solid fa-star"></i> Recommendations</a>
             <a href="creator.html" class="quick-btn"><i class="fa-solid fa-user-pen"></i> Creator</a>
-            <a href="contact.html" class="quick-btn"><i class="fa-solid fa-headset"></i> Contact</a>
         </div>
     </header>
 
@@ -324,6 +375,18 @@
                     <div class="product-price">1900 AFN</div>
                     <a href="https://wa.me/93785738048?text=Hello,%20I%20want%20to%20order%20White%20Lace%20Elegant%20Dress" class="order-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> Order via WhatsApp</a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- بخش Contact در پایین صفحه قبل از فوتر -->
+    <section class="contact-section" id="contact">
+        <div class="contact-box">
+            <h2 class="section-title" style="margin-bottom: 15px;">Contact Us</h2>
+            <p>Feel free to reach out to us through our social channels or WhatsApp for quick orders and inquiries.</p>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/_elina_online_shop?igsh=NnIxMmQ1dmpndDM4&utm_source=qr" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://wa.me/93785738048" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
             </div>
         </div>
     </section>
