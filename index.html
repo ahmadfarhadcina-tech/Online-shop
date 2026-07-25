@@ -139,21 +139,44 @@
             border-radius: 2px;
         }
 
-        /* About Us Section */
-        .about-box {
+        /* About Us Section with Image Layout */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
             background: var(--card-bg);
-            padding: 30px;
+            padding: 40px;
             border-radius: 20px;
-            text-align: center;
             border: 1px solid rgba(255,255,255,0.05);
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
-        .about-box p {
+        .about-img-box {
+            width: 100%;
+            height: 280px;
+            border-radius: 15px;
+            overflow: hidden;
+            background: #252634;
+            border: 1px solid rgba(255,71,126,0.2);
+        }
+
+        .about-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-content p {
             color: var(--text-muted);
             font-size: 15px;
-            max-width: 700px;
-            margin: 0 auto;
+            margin-bottom: 15px;
+        }
+
+        @media(max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* Products Grid Cards */
@@ -179,13 +202,8 @@
 
         .product-img {
             width: 100%;
-            height: 220px;
+            height: 320px;
             background: #252634;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            font-size: 14px;
             overflow: hidden;
         }
 
@@ -193,6 +211,11 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: 0.3s;
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.05);
         }
 
         .product-details {
@@ -236,64 +259,125 @@
             background: #20ba5a;
         }
 
-        /* About Creator Section */
-        .creator-card {
+        /* About Creator Section with Image */
+        .creator-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+            align-items: center;
             background: linear-gradient(145deg, #1a1b25, #232433);
+            padding: 40px;
             border-radius: 20px;
-            padding: 40px 20px;
-            text-align: center;
-            max-width: 500px;
-            margin: 0 auto;
             border: 1px solid rgba(255,71,126,0.2);
             box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            max-width: 850px;
+            margin: 0 auto;
         }
 
-        .creator-avatar {
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            margin: 0 auto 20px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 36px;
-            color: white;
+        .creator-img-box {
+            width: 100%;
+            height: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            background: #252634;
+            border: 2px solid var(--primary);
             box-shadow: 0 5px 15px rgba(255,71,126,0.4);
         }
 
-        .creator-card h3 {
-            font-size: 20px;
+        .creator-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .creator-info h3 {
+            font-size: 22px;
             margin-bottom: 5px;
         }
 
-        .creator-card .role {
+        .creator-info .role {
             color: var(--primary);
             font-size: 14px;
             margin-bottom: 15px;
             font-weight: 500;
         }
 
-        .creator-card p {
+        .creator-info p {
             color: var(--text-muted);
             font-size: 14px;
             margin-bottom: 25px;
             white-space: pre-line;
         }
 
-        /* Contact Section & Footer */
+        @media(max-width: 768px) {
+            .creator-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .creator-img-box {
+                max-width: 220px;
+                margin: 0 auto;
+                height: 220px;
+            }
+        }
+
+        /* Contact Section with Image/Banner support */
         .contact-section {
-            text-align: center;
             background: var(--card-bg);
-            padding: 50px 20px;
+            padding: 60px 20px;
             border-top: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+        }
+
+        .contact-box-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .contact-img-box {
+            width: 100%;
+            height: 250px;
+            border-radius: 15px;
+            overflow: hidden;
+            background: #252634;
+            border: 1px solid rgba(255,71,126,0.2);
+        }
+
+        .contact-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .contact-content {
+            text-align: left;
+        }
+
+        @media(max-width: 768px) {
+            .contact-box-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .contact-content {
+                text-align: center;
+            }
         }
 
         .social-icons {
             display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 25px;
+            gap: 15px;
+            margin-top: 20px;
+            justify-content: start;
+        }
+
+        @media(max-width: 768px) {
+            .social-icons {
+                justify-content: center;
+            }
         }
 
         .social-icons a {
@@ -334,6 +418,7 @@
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
+            <li><a href="#recommendations">Recommendations</a></li>
             <li><a href="#products">Products</a></li>
             <li><a href="#creator">Creator</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -344,25 +429,32 @@
     <header class="hero" id="home">
         <h1>Welcome to <span>Elina Online Shop</span></h1>
         <p>Discover the finest products curated specially for you with top quality and modern style.</p>
-        <a href="#products" class="btn-main">Explore Products</a>
+        <a href="#recommendations" class="btn-main">Explore Collection</a>
     </header>
 
-    <!-- About Us Section -->
+    <!-- About Us Section with Image -->
     <section class="container" id="about">
         <h2 class="section-title">About Us</h2>
-        <div class="about-box">
-            <p>Elina Online Shop is your ultimate destination for trendy and high-quality items. We are dedicated to providing an amazing shopping experience with reliable service, carefully selected products, and exceptional style tailored to your daily needs.</p>
+        <div class="about-grid">
+            <div class="about-img-box">
+                <!-- عکس بخش درباره ما (نام عکس را می توانید about-img.jpg بگذارید) -->
+                <img src="about-img.jpg" alt="About Elina Shop">
+            </div>
+            <div class="about-content">
+                <p>Elina Online Shop is your ultimate destination for trendy and high-quality items. We are dedicated to providing an amazing shopping experience with reliable service, carefully selected products, and exceptional style tailored to your daily needs.</p>
+                <p>We strive to bring elegance and modern fashion right to your doorstep with simple and fast ordering.</p>
+            </div>
         </div>
     </section>
 
-    <!-- Products Section -->
-    <section class="container" id="products">
-        <h2 class="section-title">Our Products</h2>
+    <!-- Featured Recommendations (دو نمونه پیش نمایش) -->
+    <section class="container" id="recommendations">
+        <h2 class="section-title">Featured Recommendations</h2>
         <div class="products-grid">
             <!-- Product 1: Pink Floral Dress -->
             <div class="product-card">
                 <div class="product-img">
-                    <img src="pink-floral-dress.jpg" alt="Pink 3D Floral Maxi Dress">
+                    <img src="330825.jpg" alt="Pink 3D Floral Maxi Dress">
                 </div>
                 <div class="product-details">
                     <div class="product-title">Pink 3D Floral Maxi Dress</div>
@@ -375,7 +467,7 @@
             <!-- Product 2: White Lace Dress -->
             <div class="product-card">
                 <div class="product-img">
-                    <img src="white-lace-dress.jpg" alt="White Lace Elegant Dress">
+                    <img src="330809.jpg" alt="White Lace Elegant Dress">
                 </div>
                 <div class="product-details">
                     <div class="product-title">White Lace Elegant Dress</div>
@@ -387,31 +479,76 @@
         </div>
     </section>
 
-    <!-- About Creator Section -->
+    <!-- Our Products Section (بخش محصولات جداگانه شما) -->
+    <section class="container" id="products">
+        <h2 class="section-title">Our Products</h2>
+        <div class="products-grid">
+            <!-- Product Item 1 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="pink-floral-dress.jpg" alt="Exclusive Item 01">
+                </div>
+                <div class="product-details">
+                    <div class="product-title">Exclusive Item 01</div>
+                    <div class="product-desc">High-quality trendy outfit designed for special occasions. Sizes: S, M, L</div>
+                    <div class="product-price">2500 AFN</div>
+                    <a href="https://wa.me/93785738048?text=Hello,%20I%20want%20to%20order%20Exclusive%20Item%2001" class="order-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> Order via WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Product Item 2 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="white-lace-dress.jpg" alt="Exclusive Item 02">
+                </div>
+                <div class="product-details">
+                    <div class="product-title">Exclusive Item 02</div>
+                    <div class="product-desc">Luxurious daily and party wear outfit with modern style. Sizes: S, M, L, XL</div>
+                    <div class="product-price">1900 AFN</div>
+                    <a href="https://wa.me/93785738048?text=Hello,%20I%20want%20to%20order%20Exclusive%20Item%2002" class="order-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> Order via WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Creator Section with Image -->
     <section class="container" id="creator">
         <h2 class="section-title">About Creator</h2>
-        <div class="creator-card">
-            <div class="creator-avatar">
-                <i class="fa-solid fa-user-pen"></i>
+        <div class="creator-grid">
+            <div class="creator-img-box">
+                <!-- عکس سازنده (نام عکس را می توانید creator.jpg بگذارید) -->
+                <img src="creator.jpg" alt="Marjan - Founder of Elina Shop">
             </div>
-            <h3>Elina Shop Founder</h3>
-            <div class="role">Lead Designer & Developer</div>
-            <p>About the Founder
+            <div class="creator-info">
+                <h3>Elina Shop Founder</h3>
+                <div class="role">Lead Designer & Developer</div>
+                <p>About the Founder
 
 My name is Marjan, and I am the founder and owner of Elina Shop. With a passion for fashion, beauty, and elegant style, I created Elina Shop to offer stylish and unique clothing for women.
 
 For me, Elina Shop is more than just a shop; it is a dream built with passion, dedication, and hard work.</p>
-            <a href="#contact" class="btn-main" style="padding: 10px 25px; font-size: 13px;">Get in Touch</a>
+                <a href="#contact" class="btn-main" style="padding: 10px 25px; font-size: 13px;">Get in Touch</a>
+            </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact Section with Image -->
     <section class="contact-section" id="contact">
-        <h2 class="section-title" style="margin-bottom: 20px;">Contact Us</h2>
-        <p style="color: var(--text-muted); font-size: 14px;">Feel free to reach out to us through our social channels or WhatsApp.</p>
-        <div class="social-icons">
-            <a href="https://www.instagram.com/_elina_online_shop?igsh=NnIxMmQ1dmpndDM4&utm_source=qr" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://wa.me/93785738048" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        <div class="container" style="padding: 0;">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-box-grid">
+                <div class="contact-img-box">
+                    <!-- عکس بخش ارتباط با ما (نام عکس را می توانید contact-img.jpg بگذارید) -->
+                    <img src="contact-img.jpg" alt="Contact Us">
+                </div>
+                <div class="contact-content">
+                    <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 15px;">Feel free to reach out to us through our social channels or WhatsApp for quick orders and inquiries.</p>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/_elina_online_shop?igsh=NnIxMmQ1dmpndDM4&utm_source=qr" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://wa.me/93785738048" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
