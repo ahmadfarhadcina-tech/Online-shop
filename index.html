@@ -1,198 +1,409 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فروشگاه آنلاین | Online Shop</title>
-    <!-- استفاده از فونت وزیرمتن برای زیبایی متن‌ها -->
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <title>Elina Online Shop</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --primary: #ff477e;
+            --secondary: #ff85a1;
+            --bg-dark: #0f1016;
+            --card-bg: #1a1b25;
+            --text-color: #f1f1f2;
+            --text-muted: #a0a0ab;
+            --accent: #ffb3c6;
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Vazirmatn', sans-serif;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
         }
+
         body {
-            background-color: #0f172a;
-            color: #f8fafc;
+            background-color: var(--bg-dark);
+            color: var(--text-color);
             line-height: 1.6;
         }
-        /* منوی ناوبری شیک */
+
+        /* Navbar */
         nav {
-            background: #1e293b;
-            padding: 15px 20px;
+            background: rgba(26, 27, 37, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
             z-index: 1000;
+            border-bottom: 1px solid rgba(255, 71, 126, 0.2);
         }
+
         .logo {
             font-size: 20px;
-            font-weight: bold;
-            color: #38bdf8;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 1px;
         }
+
         .nav-links {
             display: flex;
-            gap: 15px;
+            gap: 20px;
             list-style: none;
         }
+
         .nav-links a {
-            color: #cbd5e1;
+            color: var(--text-color);
             text-decoration: none;
             font-size: 14px;
+            font-weight: 500;
             transition: 0.3s;
         }
+
         .nav-links a:hover {
-            color: #38bdf8;
+            color: var(--primary);
         }
-        /* بخش هدر یا بنر خوش‌آمدگویی */
+
+        /* Hero Section */
         .hero {
             text-align: center;
-            padding: 40px 20px;
-            background: linear-gradient(135deg, #1e293b, #0f172a);
-            border-bottom: 1px solid #334155;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, rgba(255,71,126,0.1), rgba(15,16,22,1));
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
+
         .hero h1 {
-            font-size: 24px;
-            margin-bottom: 10px;
-            color: #f1f5f9;
-        }
-        .hero p {
-            color: #94a3b8;
-            font-size: 14px;
-        }
-        /* محوطه محصولات */
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 0 15px;
-        }
-        .section-title {
-            font-size: 18px;
+            font-size: 32px;
             margin-bottom: 15px;
-            border-right: 4px solid #38bdf8;
-            padding-right: 10px;
+            color: #fff;
         }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 15px;
+            max-width: 600px;
+            margin: 0 auto 25px auto;
+        }
+
+        .btn-main {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(255, 71, 126, 0.4);
+            transition: 0.3s;
+        }
+
+        .btn-main:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 71, 126, 0.6);
+        }
+
+        /* Container Layout */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 26px;
+            margin-bottom: 40px;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+            margin: 8px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        /* About Us Section */
+        .about-box {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .about-box p {
+            color: var(--text-muted);
+            font-size: 15px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Products Grid Cards */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
         }
+
         .product-card {
-            background: #1e293b;
-            border-radius: 12px;
+            background: var(--card-bg);
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-            border: 1px solid #334155;
-            transition: transform 0.2s;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.3s;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
         }
+
         .product-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            border-color: rgba(255,71,126,0.3);
         }
+
         .product-img {
             width: 100%;
-            height: 180px;
-            background: #334155;
+            height: 200px;
+            background: #252634;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #94a3b8;
+            color: var(--text-muted);
             font-size: 14px;
         }
-        .product-info {
-            padding: 15px;
+
+        .product-details {
+            padding: 20px;
         }
+
         .product-title {
-            font-size: 16px;
-            font-weight: bold;
+            font-size: 18px;
+            font-weight: 600;
             margin-bottom: 8px;
         }
+
         .product-price {
-            color: #38bdf8;
-            font-weight: bold;
-            margin-bottom: 12px;
-            font-size: 15px;
+            color: var(--primary);
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 15px;
         }
-        .buy-btn {
+
+        .order-btn {
             display: block;
             width: 100%;
             background: #25d366;
             color: white;
             text-align: center;
             padding: 10px;
-            border-radius: 8px;
+            border-radius: 10px;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 600;
             font-size: 14px;
-            transition: background 0.3s;
+            transition: 0.3s;
         }
-        .buy-btn:hover {
+
+        .order-btn:hover {
             background: #20ba5a;
         }
-        /* فوتر سایت */
+
+        /* About Creator Section */
+        .creator-card {
+            background: linear-gradient(145deg, #1a1b25, #232433);
+            border-radius: 20px;
+            padding: 40px 20px;
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto;
+            border: 1px solid rgba(255,71,126,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        .creator-avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            margin: 0 auto 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            color: white;
+            box-shadow: 0 5px 15px rgba(255,71,126,0.4);
+        }
+
+        .creator-card h3 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .creator-card .role {
+            color: var(--primary);
+            font-size: 14px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .creator-card p {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        /* Contact Section & Footer */
+        .contact-section {
+            text-align: center;
+            background: var(--card-bg);
+            padding: 50px 20px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .social-icons a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255,71,126,0.1);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            text-decoration: none;
+            transition: 0.3s;
+            border: 1px solid rgba(255,71,126,0.3);
+        }
+
+        .social-icons a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
         footer {
             text-align: center;
             padding: 20px;
-            background: #1e293b;
-            color: #64748b;
+            background: #090a0f;
+            color: var(--text-muted);
             font-size: 13px;
-            margin-top: 40px;
-            border-top: 1px solid #334155;
         }
     </style>
 </head>
 <body>
 
-    <!-- منوی ناوبری -->
+    <!-- Navbar -->
     <nav>
-        <div class="logo">فروشگاه من</div>
+        <div class="logo">Elina Shop</div>
         <ul class="nav-links">
-            <li><a href="index.html">صفحه اصلی</a></li>
-            <li><a href="#products">محصولات</a></li>
-            <li><a href="https://wa.me/93775667688" target="_blank">ارتباط با ما</a></li>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#creator">Creator</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
-    <!-- بخش بنر اصلی -->
-    <div class="hero">
-        <h1>به فروشگاه آنلاین ما خوش آمدید 👋</h1>
-        <p>بهترین و باکیفیت‌ترین اجناس با مناسب‌ترین قیمت</p>
-    </div>
+    <!-- Hero Section -->
+    <header class="hero" id="home">
+        <h1>Welcome to <span>Elina Online Shop</span></h1>
+        <p>Discover the finest products curated specially for you with top quality and modern style.</p>
+        <a href="#products" class="btn-main">Explore Products</a>
+    </header>
 
-    <!-- بخش محصولات -->
-    <div class="container" id="products">
-        <h2 class="section-title">محصولات ویژه</h2>
-        
+    <!-- About Us Section -->
+    <section class="container" id="about">
+        <h2 class="section-title">About Us</h2>
+        <div class="about-box">
+            <p>Elina Online Shop is your ultimate destination for trendy and high-quality items. We are dedicated to providing an amazing shopping experience with reliable service, carefully selected products, and exceptional style tailored to your daily needs.</p>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="container" id="products">
+        <h2 class="section-title">Our Products</h2>
         <div class="products-grid">
-            <!-- محصول اول -->
+            <!-- Product 1 -->
             <div class="product-card">
-                <div class="product-img">تصویر محصول</div>
-                <div class="product-info">
-                    <div class="product-title">نام محصول اول</div>
-                    <div class="product-price">۵۰۰ افغانی</div>
-                    <a href="https://wa.me/93775667688?text=سلام،‌ می‌خواستم محصول (نام محصول اول) را سفارش دهم." class="buy-btn" target="_blank">سفارش در واتساپ</a>
+                <div class="product-img"><i class="fa-solid fa-image" style="font-size: 28px; opacity: 0.5;"></i></div>
+                <div class="product-details">
+                    <div class="product-title">Exclusive Item 01</div>
+                    <div class="product-price">$25.00</div>
+                    <a href="https://wa.me/93785738048?text=Hello,%20I%20want%20to%20order%20Exclusive%20Item%2001" class="order-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> Order via WhatsApp</a>
                 </div>
             </div>
 
-            <!-- محصول دوم -->
+            <!-- Product 2 -->
             <div class="product-card">
-                <div class="product-img">تصویر محصول</div>
-                <div class="product-info">
-                    <div class="product-title">نام محصول دوم</div>
-                    <div class="product-price">۸۰۰ افغانی</div>
-                    <a href="https://wa.me/93775667688?text=سلام،‌ می‌خواستم محصول (نام محصول دوم) را سفارش دهم." class="buy-btn" target="_blank">سفارش در واتساپ</a>
+                <div class="product-img"><i class="fa-solid fa-image" style="font-size: 28px; opacity: 0.5;"></i></div>
+                <div class="product-details">
+                    <div class="product-title">Exclusive Item 02</div>
+                    <div class="product-price">$35.00</div>
+                    <a href="https://wa.me/93785738048?text=Hello,%20I%20want%20to%20order%20Exclusive%20Item%2002" class="order-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> Order via WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="product-img"><i class="fa-solid fa-image" style="font-size: 28px; opacity: 0.5;"></i></div>
+                <div class="product-details">
+                    <div class="product-title">Exclusive Item 03</div>
+                    <div class="product-price">$45.00</div>
+                    <a href="https://wa.me/93785738048?text=Hello,%20I%20want%20to%20order%20Exclusive%20Item%2003" class="order-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> Order via WhatsApp</a>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- فوتر -->
+    <!-- About Creator Section -->
+    <section class="container" id="creator">
+        <h2 class="section-title">About Creator</h2>
+        <div class="creator-card">
+            <div class="creator-avatar">
+                <i class="fa-solid fa-user-pen"></i>
+            </div>
+            <h3>Elina Shop Founder</h3>
+            <div class="role">Lead Designer & Developer</div>
+            <p>This store was passionately designed and built with modern web standards to provide a smooth, elegant, and delightful online shopping experience.</p>
+            <a href="#contact" class="btn-main" style="padding: 10px 25px; font-size: 13px;">Get in Touch</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <h2 class="section-title" style="margin-bottom: 20px;">Contact Us</h2>
+        <p style="color: var(--text-muted); font-size: 14px;">Feel free to reach out to us through our social channels or WhatsApp.</p>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/_elina_online_shop?igsh=NnIxMmQ1dmpndDM4&utm_source=qr" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://wa.me/93785738048" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <p>تمامی حقوق محفوظ است | طراحی شده برای فروشگاه آنلاین شما</p>
+        <p>&copy; 2026 Elina Online Shop. All Rights Reserved.</p>
     </footer>
 
 </body>
