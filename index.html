@@ -76,16 +76,68 @@
             color: var(--primary);
         }
 
+        /* Creator Profile Top Bar */
+        .creator-top-bar {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px 15px;
+            background: rgba(26, 27, 37, 0.6);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            flex-wrap: wrap;
+        }
+
+        .creator-badge {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 71, 126, 0.3);
+            padding: 8px 18px;
+            border-radius: 35px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .creator-badge:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .creator-badge img {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary);
+        }
+
+        .creator-info {
+            text-align: left;
+        }
+
+        .creator-name {
+            color: var(--secondary);
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .creator-role {
+            color: var(--text-muted);
+            font-size: 11px;
+        }
+
         /* Hero Section */
         .hero {
             width: 100%;
-            min-height: 80vh;
+            min-height: 60vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 50px 20px;
+            padding: 40px 20px;
             background: linear-gradient(135deg, rgba(255,71,126,0.15), rgba(15,16,22,1));
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
@@ -107,26 +159,7 @@
             margin: 0 auto 25px auto;
         }
 
-        .btn-main {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 12px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(255, 71, 126, 0.4);
-            transition: 0.3s;
-            font-size: 14px;
-            margin-bottom: 25px;
-        }
-
-        .btn-main:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 71, 126, 0.6);
-        }
-
-        /* Quick Navigation Buttons (بدون دکمه contact) */
+        /* Quick Navigation Buttons */
         .quick-nav {
             display: flex;
             flex-wrap: wrap;
@@ -155,17 +188,44 @@
             border-color: var(--primary);
         }
 
+        /* Alert Box */
+        .alert-box-container {
+            max-width: 800px;
+            margin: 30px auto 10px auto;
+            padding: 0 20px;
+        }
+
+        .alert-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 71, 126, 0.4);
+            padding: 18px 22px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            color: var(--text-muted);
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .alert-card i {
+            color: var(--primary);
+            font-size: 20px;
+        }
+
         /* Container Layout */
         .container {
             width: 100%;
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 50px 20px;
+            padding: 40px 20px;
         }
 
         .section-title {
             text-align: center;
-            font-size: 26px;
+            font-size: 28px;
             margin-bottom: 35px;
             font-weight: 600;
             position: relative;
@@ -181,11 +241,11 @@
             border-radius: 2px;
         }
 
-        /* Products Grid Cards */
+        /* Products Grid Cards (بزرگ‌تر و کارت‌بندی شده) */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
             width: 100%;
         }
 
@@ -193,19 +253,20 @@
             background: var(--card-bg);
             border-radius: 20px;
             overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
             transition: 0.3s;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
         }
 
         .product-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(255,71,126,0.3);
+            transform: translateY(-6px);
+            border-color: rgba(255,71,126,0.5);
+            box-shadow: 0 15px 35px rgba(255, 71, 126, 0.15);
         }
 
         .product-img {
             width: 100%;
-            height: 300px;
+            height: 340px;
             background: #252634;
             overflow: hidden;
         }
@@ -214,29 +275,36 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: 0.4s;
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.03);
         }
 
         .product-details {
-            padding: 20px;
+            padding: 24px;
         }
 
         .product-title {
-            font-size: 17px;
+            font-size: 19px;
             font-weight: 600;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            color: #fff;
         }
 
         .product-desc {
             color: var(--text-muted);
-            font-size: 13px;
-            margin-bottom: 12px;
+            font-size: 13.5px;
+            margin-bottom: 15px;
+            line-height: 1.6;
         }
 
         .product-price {
             color: var(--primary);
-            font-size: 16px;
+            font-size: 17px;
             font-weight: 700;
-            margin-bottom: 15px;
+            margin-bottom: 18px;
         }
 
         .order-btn {
@@ -245,19 +313,21 @@
             background: #25d366;
             color: white;
             text-align: center;
-            padding: 10px;
-            border-radius: 10px;
+            padding: 12px;
+            border-radius: 12px;
             text-decoration: none;
             font-weight: 600;
             font-size: 14px;
             transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
         }
 
         .order-btn:hover {
             background: #20ba5a;
+            transform: translateY(-2px);
         }
 
-        /* Contact Section اضافه شده در پایین صفحه */
+        /* Contact Section */
         .contact-section {
             width: 100%;
             max-width: 800px;
@@ -331,19 +401,38 @@
         </ul>
     </nav>
 
+    <!-- Creator Profile Top Bar -->
+    <div class="creator-top-bar">
+        <a href="creator.html" class="creator-badge">
+            <img src="creator.jpg" alt="Creator">
+            <div class="creator-info">
+                <div class="creator-name">F. Cina</div>
+                <div class="creator-role">Creator of Elina Shop</div>
+            </div>
+        </a>
+    </div>
+
     <!-- Hero Section -->
     <header class="hero" id="home">
         <h1>Welcome to <span>Elina Online Shop</span></h1>
         <p>Discover the finest products curated specially for you with top quality and modern style.</p>
 
-        <!-- دکمه‌های دسترسی سریع (بدون دکمه Contact) -->
+        <!-- دکمه‌های دسترسی سریع -->
         <div class="quick-nav">
-            <a href="products.html" class="quick-btn"><i class="fa-solid fa-bag-shopping"></i> Products</a>
-            <a href="creator.html" class="quick-btn"><i class="fa-solid fa-user-pen"></i> Creator</a>
+            <a href="#recommendations" class="quick-btn"><i class="fa-solid fa-bag-shopping"></i> Products</a>
+            <a href="about.html" class="quick-btn"><i class="fa-solid fa-user-pen"></i> About Creator</a>
         </div>
     </header>
 
-    <!-- Featured Recommendations (پیش‌نمایش‌ها با دو پروژه لباس شما) -->
+    <!-- Alert Box -->
+    <div class="alert-box-container">
+        <div class="alert-card">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <div>تا پایان امتحانات، پیشرفت جدیدی در سایت انجام نخواهد شد. از صبر و همراهی شما سپاسگزاریم.</div>
+        </div>
+    </div>
+
+    <!-- Featured Recommendations (محصولات کارت‌بندی شده بزرگ‌تر) -->
     <section class="container" id="recommendations">
         <h2 class="section-title">Featured Recommendations</h2>
         <div class="products-grid">
