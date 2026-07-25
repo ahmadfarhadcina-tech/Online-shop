@@ -31,13 +31,15 @@
             background-color: var(--bg-dark);
             color: var(--text-color);
             line-height: 1.6;
+            width: 100%;
+            overflow-x: hidden;
         }
 
         /* Navbar */
         nav {
             background: rgba(26, 27, 37, 0.95);
             backdrop-filter: blur(10px);
-            padding: 15px 30px;
+            padding: 15px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -45,6 +47,7 @@
             top: 0;
             z-index: 1000;
             border-bottom: 1px solid rgba(255, 71, 126, 0.2);
+            width: 100%;
         }
 
         .logo {
@@ -56,7 +59,7 @@
 
         .nav-links {
             display: flex;
-            gap: 20px;
+            gap: 25px;
             list-style: none;
         }
 
@@ -72,16 +75,22 @@
             color: var(--primary);
         }
 
-        /* Hero Section */
+        /* Hero Section Fullscreen */
         .hero {
+            width: 100%;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 80px 20px;
-            background: linear-gradient(135deg, rgba(255,71,126,0.1), rgba(15,16,22,1));
+            padding: 60px 20px;
+            background: linear-gradient(135deg, rgba(255,71,126,0.15), rgba(15,16,22,1));
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
         .hero h1 {
-            font-size: 32px;
+            font-size: 40px;
             margin-bottom: 15px;
             color: #fff;
         }
@@ -92,16 +101,16 @@
 
         .hero p {
             color: var(--text-muted);
-            font-size: 15px;
-            max-width: 600px;
-            margin: 0 auto 25px auto;
+            font-size: 16px;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
         }
 
         .btn-main {
             display: inline-block;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
-            padding: 12px 30px;
+            padding: 14px 35px;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
@@ -114,17 +123,18 @@
             box-shadow: 0 6px 20px rgba(255, 71, 126, 0.6);
         }
 
-        /* Container Layout */
+        /* Container Layout Full Width Balance */
         .container {
-            max-width: 1100px;
+            width: 100%;
+            max-width: 1300px;
             margin: 0 auto;
-            padding: 60px 20px;
+            padding: 80px 40px;
         }
 
         .section-title {
             text-align: center;
-            font-size: 26px;
-            margin-bottom: 40px;
+            font-size: 30px;
+            margin-bottom: 50px;
             font-weight: 600;
             position: relative;
         }
@@ -132,10 +142,10 @@
         .section-title::after {
             content: '';
             display: block;
-            width: 50px;
+            width: 60px;
             height: 3px;
             background: var(--primary);
-            margin: 8px auto 0 auto;
+            margin: 10px auto 0 auto;
             border-radius: 2px;
         }
 
@@ -143,18 +153,19 @@
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            gap: 50px;
             align-items: center;
             background: var(--card-bg);
-            padding: 40px;
+            padding: 50px;
             border-radius: 20px;
             border: 1px solid rgba(255,255,255,0.05);
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            width: 100%;
         }
 
         .about-img-box {
             width: 100%;
-            height: 280px;
+            height: 320px;
             border-radius: 15px;
             overflow: hidden;
             background: #252634;
@@ -169,21 +180,29 @@
 
         .about-content p {
             color: var(--text-muted);
-            font-size: 15px;
+            font-size: 16px;
             margin-bottom: 15px;
         }
 
         @media(max-width: 768px) {
             .about-grid {
                 grid-template-columns: 1fr;
+                padding: 25px;
+            }
+            nav {
+                padding: 15px 20px;
+            }
+            .container {
+                padding: 50px 20px;
             }
         }
 
         /* Products Grid Cards */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            width: 100%;
         }
 
         .product-card {
@@ -202,7 +221,7 @@
 
         .product-img {
             width: 100%;
-            height: 320px;
+            height: 350px;
             background: #252634;
             overflow: hidden;
         }
@@ -219,26 +238,26 @@
         }
 
         .product-details {
-            padding: 20px;
+            padding: 25px;
         }
 
         .product-title {
-            font-size: 18px;
+            font-size: 19px;
             font-weight: 600;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
 
         .product-desc {
             color: var(--text-muted);
-            font-size: 13px;
-            margin-bottom: 12px;
+            font-size: 14px;
+            margin-bottom: 15px;
         }
 
         .product-price {
             color: var(--primary);
-            font-size: 16px;
+            font-size: 17px;
             font-weight: 700;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .order-btn {
@@ -247,8 +266,8 @@
             background: #25d366;
             color: white;
             text-align: center;
-            padding: 10px;
-            border-radius: 10px;
+            padding: 12px;
+            border-radius: 12px;
             text-decoration: none;
             font-weight: 600;
             font-size: 14px;
@@ -262,21 +281,22 @@
         /* About Creator Section with Image */
         .creator-grid {
             display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 40px;
+            grid-template-columns: 350px 1fr;
+            gap: 50px;
             align-items: center;
             background: linear-gradient(145deg, #1a1b25, #232433);
-            padding: 40px;
+            padding: 50px;
             border-radius: 20px;
             border: 1px solid rgba(255,71,126,0.2);
             box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-            max-width: 850px;
+            width: 100%;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
         .creator-img-box {
             width: 100%;
-            height: 300px;
+            height: 350px;
             border-radius: 15px;
             overflow: hidden;
             background: #252634;
@@ -291,20 +311,20 @@
         }
 
         .creator-info h3 {
-            font-size: 22px;
+            font-size: 24px;
             margin-bottom: 5px;
         }
 
         .creator-info .role {
             color: var(--primary);
-            font-size: 14px;
+            font-size: 15px;
             margin-bottom: 15px;
             font-weight: 500;
         }
 
         .creator-info p {
             color: var(--text-muted);
-            font-size: 14px;
+            font-size: 15px;
             margin-bottom: 25px;
             white-space: pre-line;
         }
@@ -313,34 +333,36 @@
             .creator-grid {
                 grid-template-columns: 1fr;
                 text-align: center;
+                padding: 25px;
             }
             .creator-img-box {
-                max-width: 220px;
+                max-width: 240px;
                 margin: 0 auto;
-                height: 220px;
+                height: 240px;
             }
         }
 
-        /* Contact Section with Image/Banner support */
+        /* Contact Section with Image */
         .contact-section {
             background: var(--card-bg);
-            padding: 60px 20px;
+            padding: 80px 40px;
             border-top: 1px solid rgba(255,255,255,0.05);
-            text-align: center;
+            width: 100%;
         }
 
         .contact-box-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            max-width: 900px;
+            gap: 50px;
+            max-width: 1100px;
             margin: 0 auto;
             align-items: center;
+            width: 100%;
         }
 
         .contact-img-box {
             width: 100%;
-            height: 250px;
+            height: 300px;
             border-radius: 15px;
             overflow: hidden;
             background: #252634;
@@ -381,15 +403,15 @@
         }
 
         .social-icons a {
-            width: 45px;
-            height: 45px;
+            width: 50px;
+            height: 50px;
             background: rgba(255,71,126,0.1);
             color: var(--primary);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 18px;
+            font-size: 20px;
             text-decoration: none;
             transition: 0.3s;
             border: 1px solid rgba(255,71,126,0.3);
@@ -403,10 +425,11 @@
 
         footer {
             text-align: center;
-            padding: 20px;
+            padding: 25px;
             background: #090a0f;
             color: var(--text-muted);
-            font-size: 13px;
+            font-size: 14px;
+            width: 100%;
         }
     </style>
 </head>
@@ -437,7 +460,6 @@
         <h2 class="section-title">About Us</h2>
         <div class="about-grid">
             <div class="about-img-box">
-                <!-- عکس بخش درباره ما (نام عکس را می توانید about-img.jpg بگذارید) -->
                 <img src="about-img.jpg" alt="About Elina Shop">
             </div>
             <div class="about-content">
@@ -447,11 +469,11 @@
         </div>
     </section>
 
-    <!-- Featured Recommendations (دو نمونه پیش نمایش) -->
+    <!-- Featured Recommendations (دو نمونه پیشنهادی پیش‌نمایش) -->
     <section class="container" id="recommendations">
         <h2 class="section-title">Featured Recommendations</h2>
         <div class="products-grid">
-            <!-- Product 1: Pink Floral Dress -->
+            <!-- Product 1 -->
             <div class="product-card">
                 <div class="product-img">
                     <img src="330825.jpg" alt="Pink 3D Floral Maxi Dress">
@@ -464,7 +486,7 @@
                 </div>
             </div>
 
-            <!-- Product 2: White Lace Dress -->
+            <!-- Product 2 -->
             <div class="product-card">
                 <div class="product-img">
                     <img src="330809.jpg" alt="White Lace Elegant Dress">
@@ -479,7 +501,7 @@
         </div>
     </section>
 
-    <!-- Our Products Section (بخش محصولات جداگانه شما) -->
+    <!-- Our Products Section (محصولات اصلی شما) -->
     <section class="container" id="products">
         <h2 class="section-title">Our Products</h2>
         <div class="products-grid">
@@ -516,7 +538,6 @@
         <h2 class="section-title">About Creator</h2>
         <div class="creator-grid">
             <div class="creator-img-box">
-                <!-- عکس سازنده (نام عکس را می توانید creator.jpg بگذارید) -->
                 <img src="creator.jpg" alt="Marjan - Founder of Elina Shop">
             </div>
             <div class="creator-info">
@@ -534,19 +555,16 @@ For me, Elina Shop is more than just a shop; it is a dream built with passion, d
 
     <!-- Contact Section with Image -->
     <section class="contact-section" id="contact">
-        <div class="container" style="padding: 0;">
-            <h2 class="section-title">Contact Us</h2>
-            <div class="contact-box-grid">
-                <div class="contact-img-box">
-                    <!-- عکس بخش ارتباط با ما (نام عکس را می توانید contact-img.jpg بگذارید) -->
-                    <img src="contact-img.jpg" alt="Contact Us">
-                </div>
-                <div class="contact-content">
-                    <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 15px;">Feel free to reach out to us through our social channels or WhatsApp for quick orders and inquiries.</p>
-                    <div class="social-icons">
-                        <a href="https://www.instagram.com/_elina_online_shop?igsh=NnIxMmQ1dmpndDM4&utm_source=qr" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="https://wa.me/93785738048" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-                    </div>
+        <div class="contact-box-grid">
+            <div class="contact-img-box">
+                <img src="contact-img.jpg" alt="Contact Us">
+            </div>
+            <div class="contact-content">
+                <h2 class="section-title" style="text-align: left; margin-bottom: 20px;">Contact Us</h2>
+                <p style="color: var(--text-muted); font-size: 15px; margin-bottom: 20px;">Feel free to reach out to us through our social channels or WhatsApp for quick orders and inquiries.</p>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/_elina_online_shop?igsh=NnIxMmQ1dmpndDM4&utm_source=qr" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://wa.me/93785738048" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
                 </div>
             </div>
         </div>
