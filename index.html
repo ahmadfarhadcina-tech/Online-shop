@@ -76,7 +76,7 @@
             color: var(--primary);
         }
 
-        /* Creator Profile Top Bar & Auth Area */
+        /* Creator Profile Top Bar & Auth Area (در کنار هم) */
         .creator-top-bar {
             display: flex;
             justify-content: center;
@@ -148,6 +148,20 @@
         .auth-subtitle {
             color: var(--text-muted);
             font-size: 11px;
+        }
+
+        /* Global Notification Box (پیام موفقیت سراسری بالای صفحه) */
+        #globalNotification {
+            display: none;
+            max-width: 600px;
+            margin: 15px auto 0 auto;
+            padding: 12px 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: 0.3s;
         }
 
         /* Modal Popup for Login/Signup */
@@ -437,7 +451,7 @@
         </ul>
     </nav>
 
-    <!-- Creator Profile Top Bar & Auth Area -->
+    <!-- Creator Profile Top Bar & Auth Area (در کنار هم) -->
     <div class="creator-top-bar">
         <!-- کارت سازنده -->
         <a href="creator.html" class="creator-badge">
@@ -457,6 +471,9 @@
             </div>
         </div>
     </div>
+
+    <!-- Global Notification Box (باکس پیام‌های موفقیت و خطا) -->
+    <div id="globalNotification"></div>
 
     <!-- Modal پنجره ورود و ثبت‌نام -->
     <div id="authModal" class="auth-modal">
@@ -530,31 +547,31 @@
         </div>
     </section>
 
-    <!-- بخش نظرات کاربران (بالا قرار گرفت) -->
+    <!-- بخش نظرات کاربران -->
     <section class="contact-section" style="margin-bottom: 20px;">
         <div class="contact-box" style="text-align: left;">
-            <h2 class="section-title" style="text-align: center; margin-bottom: 25px;">نظر خود را بنویسید</h2>
+            <h2 class="section-title" style="text-align: center; margin-bottom: 25px;">Leave a Review</h2>
             
             <form id="reviewForm" style="display: flex; flex-direction: column; gap: 18px;">
                 <div>
-                    <label for="userName" style="display: block; margin-bottom: 6px; font-size: 14px; color: var(--text-color);">نام شما:</label>
+                    <label for="userName" style="display: block; margin-bottom: 6px; font-size: 14px; color: var(--text-color);">Your Name:</label>
                     <input type="text" id="userName" required style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); background: #252634; color: #fff; font-size: 14px;">
                 </div>
                 
                 <div>
-                    <label for="userMessage" style="display: block; margin-bottom: 6px; font-size: 14px; color: var(--text-color);">نظر شما:</label>
+                    <label for="userMessage" style="display: block; margin-bottom: 6px; font-size: 14px; color: var(--text-color);">Your Message:</label>
                     <textarea id="userMessage" rows="4" required style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); background: #252634; color: #fff; font-size: 14px; resize: vertical;"></textarea>
                 </div>
                 
-                <button type="submit" style="padding: 13px; background: var(--primary); color: #fff; border: none; border-radius: 10px; font-size: 16px; cursor: pointer; font-weight: 600; transition: 0.3px; box-shadow: 0 4px 15px rgba(255,71,126,0.3);">ثبت نظر</button>
+                <button type="submit" style="padding: 13px; background: var(--primary); color: #fff; border: none; border-radius: 10px; font-size: 16px; cursor: pointer; font-weight: 600; transition: 0.3px; box-shadow: 0 4px 15px rgba(255,71,126,0.3);">Submit Review</button>
             </form>
 
-            <!-- پیام موفقیت شیک در پایین فرم -->
+            <!-- پیام موفقیت نظرات به زبان انگلیسی -->
             <div id="responseMessage" style="display: none; margin-top: 15px; padding: 12px; border-radius: 8px; background: rgba(37, 211, 102, 0.15); border: 1px solid #25d366; color: #25d366; text-align: center; font-size: 14px; font-weight: 500;"></div>
         </div>
     </section>
 
-    <!-- بخش Contact (حالا در پایین بخش نظرات قرار گرفت) -->
+    <!-- بخش Contact -->
     <section class="contact-section" id="contact" style="margin-top: 0; margin-bottom: 40px;">
         <div class="contact-box">
             <h2 class="section-title" style="margin-bottom: 15px;">Contact Us</h2>
@@ -571,7 +588,7 @@
         <p>&copy; 2026 Elina Online Shop. All Rights Reserved.</p>
     </footer>
 
-    <!-- اسکریپت فایربیس (دیتابیس نظرات + سیستم احراز هویت Login واقعی) -->
+    <!-- اسکریپت فایربیس و مدیریت رویدادها -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
         import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
@@ -591,6 +608,25 @@
         const db = getFirestore(app, "online-shop");
         const auth = getAuth(app);
 
+        // تابع نمایش پیام‌های سراسری (سبز رنگ مانند بخش نظرات)
+        const globalNotification = document.getElementById('globalNotification');
+        function showGlobalNotification(message, isError = false) {
+            globalNotification.style.display = 'block';
+            globalNotification.textContent = message;
+            if (isError) {
+                globalNotification.style.background = 'rgba(233, 30, 99, 0.15)';
+                globalNotification.style.border = '1px solid #e91e63';
+                globalNotification.style.color = '#e91e63';
+            } else {
+                globalNotification.style.background = 'rgba(37, 211, 102, 0.15)';
+                globalNotification.style.border = '1px solid #25d366';
+                globalNotification.style.color = '#25d366';
+            }
+            setTimeout(() => {
+                globalNotification.style.display = 'none';
+            }, 4000);
+        }
+
         // مدیریت پنل نظرات
         const form = document.getElementById('reviewForm');
         const responseMessage = document.getElementById('responseMessage');
@@ -607,16 +643,16 @@
                     createdAt: new Date()
                 });
                 responseMessage.style.display = 'block';
-                responseMessage.textContent = 'نظر شما با موفقیت ثبت شد!';
+                responseMessage.textContent = 'Review submitted successfully!';
                 form.reset();
                 setTimeout(() => { responseMessage.style.display = 'none'; }, 4000);
             } catch (error) {
-                console.error("خطا در ارسال نظر: ", error);
+                console.error("Error submitting review: ", error);
                 responseMessage.style.display = 'block';
                 responseMessage.style.background = 'rgba(233, 30, 99, 0.15)';
                 responseMessage.style.borderColor = '#e91e63';
                 responseMessage.style.color = '#e91e63';
-                responseMessage.textContent = 'خطا در ارسال: ' + error.message;
+                responseMessage.textContent = 'Error: ' + error.message;
             }
         });
 
@@ -635,15 +671,15 @@
 
         let isRegisterMode = false;
 
-        // باز و بسته کردن پنجره ورود
+        // باز و بسته کردن پنجره ورود یا خروج مستقیم بدون پاپ‌آپ مرورگر
         authTriggerBtn.addEventListener('click', () => {
             const currentUser = auth.currentUser;
             if (currentUser) {
-                if (confirm(`Logged in as: ${currentUser.email}\nDo you want to log out?`)) {
-                    signOut(auth).then(() => {
-                        alert('Logged out successfully.');
-                    });
-                }
+                signOut(auth).then(() => {
+                    showGlobalNotification('Logged out successfully!');
+                }).catch((error) => {
+                    showGlobalNotification(error.message, true);
+                });
             } else {
                 authModal.style.display = 'flex';
             }
@@ -672,7 +708,7 @@
             authErrorMsg.textContent = '';
         });
 
-        // عملیات واقعی ثبت‌نام یا ورود در فایربیس
+        // عملیات واقعی ثبت‌نام یا ورود در فایربیس با پیام‌های موفقیت انگلیسی
         authForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const email = document.getElementById('authEmail').value;
@@ -682,10 +718,10 @@
             try {
                 if (isRegisterMode) {
                     await createUserWithEmailAndPassword(auth, email, password);
-                    alert('Account created successfully!');
+                    showGlobalNotification('Account registered successfully!');
                 } else {
                     await signInWithEmailAndPassword(auth, email, password);
-                    alert('Logged in successfully!');
+                    showGlobalNotification('Logged in successfully!');
                 }
                 authModal.style.display = 'none';
                 authForm.reset();
@@ -694,7 +730,7 @@
             }
         });
 
-        // بررسی وضعیت زنده کاربر (آیا لاگین هست یا خیر)
+        // بررسی وضعیت زنده کاربر
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 authMainTitle.textContent = user.email.split('@')[0];
