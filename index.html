@@ -397,7 +397,7 @@
         </div>
     </header>
 
-    <!-- Featured Recommendations (محصولات کارت‌بندی شده بزرگ‌تر) -->
+    <!-- Featured Recommendations -->
     <section class="container" id="recommendations">
         <h2 class="section-title">Featured Recommendations</h2>
         <div class="products-grid">
@@ -429,7 +429,7 @@
         </div>
     </section>
 
-    <!-- بخش Contact در پایین صفحه قبل از فوتر -->
+    <!-- بخش Contact -->
     <section class="contact-section" id="contact">
         <div class="contact-box">
             <h2 class="section-title" style="margin-bottom: 15px;">Contact Us</h2>
@@ -441,74 +441,88 @@
         </div>
     </section>
 
+    <!-- بخش نظرات کاربران شیک در کارت مخصوص -->
+    <section class="contact-section" style="margin-top: 0; margin-bottom: 40px;">
+        <div class="contact-box" style="text-align: left;">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 25px;">نظر خود را بنویسید</h2>
+            
+            <form id="reviewForm" style="display: flex; flex-direction: column; gap: 18px;">
+                <div>
+                    <label for="userName" style="display: block; margin-bottom: 6px; font-size: 14px; color: var(--text-color);">نام شما:</label>
+                    <input type="text" id="userName" required style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); background: #252634; color: #fff; font-size: 14px;">
+                </div>
+                
+                <div>
+                    <label for="userMessage" style="display: block; margin-bottom: 6px; font-size: 14px; color: var(--text-color);">نظر شما:</label>
+                    <textarea id="userMessage" rows="4" required style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); background: #252634; color: #fff; font-size: 14px; resize: vertical;"></textarea>
+                </div>
+                
+                <button type="submit" style="padding: 13px; background: var(--primary); color: #fff; border: none; border-radius: 10px; font-size: 16px; cursor: pointer; font-weight: 600; transition: 0.3px; box-shadow: 0 4px 15px rgba(255,71,126,0.3);">ثبت نظر</button>
+            </form>
+
+            <!-- پیام موفقیت شیک در پایین فرم -->
+            <div id="responseMessage" style="display: none; margin-top: 15px; padding: 12px; border-radius: 8px; background: rgba(37, 211, 102, 0.15); border: 1px solid #25d366; color: #25d366; text-align: center; font-size: 14px; font-weight: 500;"></div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
         <p>&copy; 2026 Elina Online Shop. All Rights Reserved.</p>
     </footer>
 
-<!-- بخش نظرات کاربران متصل به فایربیس -->
-<section class="reviews-section" style="padding: 40px 20px; background: #1a1b26; color: #fff; text-align: center; margin-top: 40px; border-radius: 12px;">
-    <h2 style="margin-bottom: 20px; font-size: 24px;">نظر خود را بنویسید</h2>
-    
-    <form id="reviewForm" style="max-width: 400px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px;">
-        <!-- نام کاربر در بالا -->
-        <div style="text-align: left;">
-            <label for="userName" style="display: block; margin-bottom: 5px; font-size: 14px;">نام شما:</label>
-            <input type="text" id="userName" required style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #444; background: #252634; color: #fff;">
-        </div>
-        
-        <!-- نظر کاربر در پایین -->
-        <div style="text-align: left;">
-            <label for="userMessage" style="display: block; margin-bottom: 5px; font-size: 14px;">نظر شما:</label>
-            <textarea id="userMessage" rows="4" required style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #444; background: #252634; color: #fff;"></textarea>
-        </div>
-        
-        <button type="submit" style="padding: 12px; background: #e91e63; color: #fff; border: none; border-radius: 6px; font-size: 16px; cursor: pointer; font-weight: bold;">ثبت نظر</button>
-    </form>
-</section>
+    <!-- اسکریپت اتصال و ارسال به فایربیس دیتابیس شما -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-<!-- اسکریپت اتصال و ارسال به فایربیس دیتابیس شما -->
-<script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+        const firebaseConfig = {
+          apiKey: "AIzaSyDsxkWyKqaTwf41CCwNAWqfaO3pMJPC75Y",
+          authDomain: "online-shopping-2f047.firebaseapp.com",
+          projectId: "online-shopping-2f047",
+          storageBucket: "online-shopping-2f047.firebasestorage.app",
+          messagingSenderId: "342142441572",
+          appId: "1:342142441572:web:96c0d825b5929461c2e771",
+          measurementId: "G-S2X4HK6HFB"
+        };
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyDsxkWyKqaTwf41CCwNAWqfaO3pMJPC75Y",
-      authDomain: "online-shopping-2f047.firebaseapp.com",
-      projectId: "online-shopping-2f047",
-      storageBucket: "online-shopping-2f047.firebasestorage.app",
-      messagingSenderId: "342142441572",
-      appId: "1:342142441572:web:96c0d825b5929461c2e771",
-      measurementId: "G-S2X4HK6HFB"
-    };
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app, "online-shop");
 
-    const app = initializeApp(firebaseConfig);
-    // اتصال به دیتابیسی که نامش رو online-shop گذاشتی
-    const db = getFirestore(app, "online-shop");
+        const form = document.getElementById('reviewForm');
+        const responseMessage = document.getElementById('responseMessage');
 
-    const form = document.getElementById('reviewForm');
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        const name = document.getElementById('userName').value;
-        const message = document.getElementById('userMessage').value;
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('userName').value;
+            const message = document.getElementById('userMessage').value;
 
-        try {
-            await addDoc(collection(db, "reviews"), {
-                name: name,
-                message: message,
-                createdAt: new Date()
-            });
-            alert('نظر شما با موفقیت ثبت شد!');
-            form.reset();
-        } catch (error) {
-            console.error("خطا در ارسال نظر: ", error);
-            alert('خطا در ارسال: ' + error.message);
-        }
-    });
-</script>
+            try {
+                await addDoc(collection(db, "reviews"), {
+                    name: name,
+                    message: message,
+                    createdAt: new Date()
+                });
 
+                // نمایش پیام موفقیت شیک در پایین فرم به جای پنجره alert
+                responseMessage.style.display = 'block';
+                responseMessage.textContent = 'نظر شما با موفقیت ثبت شد!';
+                form.reset();
 
-    
+                // محو شدن پیام بعد از 4 ثانیه
+                setTimeout(() => {
+                    responseMessage.style.display = 'none';
+                }, 4000);
+
+            } catch (error) {
+                console.error("خطا در ارسال نظر: ", error);
+                responseMessage.style.display = 'block';
+                responseMessage.style.background = 'rgba(233, 30, 99, 0.15)';
+                responseMessage.style.borderColor = '#e91e63';
+                responseMessage.style.color = '#e91e63';
+                responseMessage.textContent = 'خطا در ارسال: ' + error.message;
+            }
+        });
+    </script>
 </body>
 </html>
