@@ -467,12 +467,11 @@
     </form>
 </section>
 
-<!-- اسکریپت اتصال و ارسال به فایربیس -->
+<!-- اسکریپت اتصال و ارسال به فایربیس دیتابیس شما -->
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
     import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-    // اطلاعات پروژه فایربیس شما
     const firebaseConfig = {
       apiKey: "AIzaSyDsxkWyKqaTwf41CCwNAWqfaO3pMJPC75Y",
       authDomain: "online-shopping-2f047.firebaseapp.com",
@@ -483,9 +482,9 @@
       measurementId: "G-S2X4HK6HFB"
     };
 
-    // راه‌اندازی فایربیس
     const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
+    // اتصال به دیتابیسی که نامش رو online-shop گذاشتی
+    const db = getFirestore(app, "online-shop");
 
     const form = document.getElementById('reviewForm');
     form.addEventListener('submit', async (e) => {
@@ -495,7 +494,6 @@
         const message = document.getElementById('userMessage').value;
 
         try {
-            // ذخیره داده‌ها در دیتابیس Firestore در بخشی به نام reviews
             await addDoc(collection(db, "reviews"), {
                 name: name,
                 message: message,
@@ -505,10 +503,11 @@
             form.reset();
         } catch (error) {
             console.error("خطا در ارسال نظر: ", error);
-            alert('خطایی رخ داد، لطفا دوباره تلاش کنید.');
+            alert('خطا در ارسال: ' + error.message);
         }
     });
 </script>
+
 
     
 </body>
