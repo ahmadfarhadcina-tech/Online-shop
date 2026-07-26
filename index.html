@@ -76,7 +76,7 @@
             color: var(--primary);
         }
 
-        /* Creator Profile Top Bar & Auth Area (در کنار هم) */
+        /* Creator Profile Top Bar & Auth Area (هر دو کاملاً در کنار هم با همان ابعاد حفظ شده) */
         .creator-top-bar {
             display: flex;
             justify-content: center;
@@ -85,7 +85,7 @@
             padding: 20px 15px;
             background: rgba(26, 27, 37, 0.6);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            flex-wrap: wrap;
+            flex-wrap: nowrap; /* جلوگیری از رفتن به خط بعد */
         }
 
         .creator-badge, .auth-badge {
@@ -150,7 +150,7 @@
             font-size: 11px;
         }
 
-        /* Global Notification Box (پیام موفقیت سراسری بالای صفحه) */
+        /* Global Notification Box (باکس پیام‌های موفقیت و خطا) */
         #globalNotification {
             display: none;
             max-width: 600px;
@@ -451,7 +451,7 @@
         </ul>
     </nav>
 
-    <!-- Creator Profile Top Bar & Auth Area (در کنار هم) -->
+    <!-- Creator Profile Top Bar & Auth Area (هر دو در کنار هم با اندازه فیکس‌شده) -->
     <div class="creator-top-bar">
         <!-- کارت سازنده -->
         <a href="creator.html" class="creator-badge">
@@ -472,7 +472,7 @@
         </div>
     </div>
 
-    <!-- Global Notification Box (باکس پیام‌های موفقیت و خطا) -->
+    <!-- Global Notification Box -->
     <div id="globalNotification"></div>
 
     <!-- Modal پنجره ورود و ثبت‌نام -->
@@ -566,7 +566,6 @@
                 <button type="submit" style="padding: 13px; background: var(--primary); color: #fff; border: none; border-radius: 10px; font-size: 16px; cursor: pointer; font-weight: 600; transition: 0.3px; box-shadow: 0 4px 15px rgba(255,71,126,0.3);">Submit Review</button>
             </form>
 
-            <!-- پیام موفقیت نظرات به زبان انگلیسی -->
             <div id="responseMessage" style="display: none; margin-top: 15px; padding: 12px; border-radius: 8px; background: rgba(37, 211, 102, 0.15); border: 1px solid #25d366; color: #25d366; text-align: center; font-size: 14px; font-weight: 500;"></div>
         </div>
     </section>
@@ -608,7 +607,6 @@
         const db = getFirestore(app, "online-shop");
         const auth = getAuth(app);
 
-        // تابع نمایش پیام‌های سراسری (سبز رنگ مانند بخش نظرات)
         const globalNotification = document.getElementById('globalNotification');
         function showGlobalNotification(message, isError = false) {
             globalNotification.style.display = 'block';
@@ -627,7 +625,6 @@
             }, 4000);
         }
 
-        // مدیریت پنل نظرات
         const form = document.getElementById('reviewForm');
         const responseMessage = document.getElementById('responseMessage');
 
@@ -656,7 +653,6 @@
             }
         });
 
-        // بخش مدیریت Modal ورود و ثبت‌نام
         const authTriggerBtn = document.getElementById('authTriggerBtn');
         const authModal = document.getElementById('authModal');
         const closeAuthModal = document.getElementById('closeAuthModal');
@@ -671,7 +667,6 @@
 
         let isRegisterMode = false;
 
-        // باز و بسته کردن پنجره ورود یا خروج مستقیم بدون پاپ‌آپ مرورگر
         authTriggerBtn.addEventListener('click', () => {
             const currentUser = auth.currentUser;
             if (currentUser) {
@@ -690,7 +685,6 @@
             authErrorMsg.textContent = '';
         });
 
-        // سوئیچ بین حالت ورود (Login) و ثبت‌نام (Register)
         toggleAuthMode.addEventListener('click', (e) => {
             e.preventDefault();
             isRegisterMode = !isRegisterMode;
@@ -708,7 +702,6 @@
             authErrorMsg.textContent = '';
         });
 
-        // عملیات واقعی ثبت‌نام یا ورود در فایربیس با پیام‌های موفقیت انگلیسی
         authForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const email = document.getElementById('authEmail').value;
@@ -730,7 +723,6 @@
             }
         });
 
-        // بررسی وضعیت زنده کاربر
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 authMainTitle.textContent = user.email.split('@')[0];
