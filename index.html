@@ -76,10 +76,11 @@
             color: var(--primary);
         }
 
-        /* Creator Profile Top Bar */
+        /* Creator Profile Top Bar & Auth Area */
         .creator-top-bar {
             display: flex;
             justify-content: center;
+            align-items: center;
             gap: 15px;
             padding: 20px 15px;
             background: rgba(26, 27, 37, 0.6);
@@ -87,7 +88,7 @@
             flex-wrap: wrap;
         }
 
-        .creator-badge {
+        .creator-badge, .auth-badge {
             display: flex;
             align-items: center;
             gap: 12px;
@@ -98,9 +99,10 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             text-decoration: none;
             transition: 0.3s;
+            cursor: pointer;
         }
 
-        .creator-badge:hover {
+        .creator-badge:hover, .auth-badge:hover {
             border-color: var(--primary);
             transform: translateY(-2px);
         }
@@ -126,6 +128,67 @@
         .creator-role {
             color: var(--text-muted);
             font-size: 11px;
+        }
+
+        .auth-badge i {
+            font-size: 18px;
+            color: var(--primary);
+        }
+
+        .auth-text {
+            text-align: left;
+        }
+
+        .auth-title {
+            color: var(--secondary);
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .auth-subtitle {
+            color: var(--text-muted);
+            font-size: 11px;
+        }
+
+        /* Modal Popup for Login/Signup */
+        .auth-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 16, 22, 0.85);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .auth-modal-content {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 71, 126, 0.3);
+            padding: 30px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: var(--text-muted);
+            font-size: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .close-modal:hover {
+            color: var(--primary);
         }
 
         /* Hero Section */
@@ -374,8 +437,9 @@
         </ul>
     </nav>
 
-    <!-- Creator Profile Top Bar -->
+    <!-- Creator Profile Top Bar & Auth Area -->
     <div class="creator-top-bar">
+        <!-- کارت سازنده -->
         <a href="creator.html" class="creator-badge">
             <img src="creator.jpg" alt="Creator">
             <div class="creator-info">
@@ -383,6 +447,43 @@
                 <div class="creator-role">Creator of Elina Shop</div>
             </div>
         </a>
+
+        <!-- بخش ورود / حساب کاربری واقعی -->
+        <div id="authTriggerBtn" class="auth-badge">
+            <i class="fa-solid fa-user-circle"></i>
+            <div class="auth-text">
+                <div id="authMainTitle" class="auth-title">Login / Register</div>
+                <div id="authSubTitle" class="auth-subtitle">Click to sign in</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal پنجره ورود و ثبت‌نام -->
+    <div id="authModal" class="auth-modal">
+        <div class="auth-modal-content">
+            <span id="closeAuthModal" class="close-modal">&times;</span>
+            <h2 id="modalTitle" style="text-align: center; margin-bottom: 20px; font-size: 22px; color: #fff;">Account Login</h2>
+            
+            <form id="authForm" style="display: flex; flex-direction: column; gap: 15px;">
+                <div>
+                    <label style="display: block; margin-bottom: 5px; font-size: 13px;">Email Address:</label>
+                    <input type="email" id="authEmail" required style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); background: #252634; color: #fff;">
+                </div>
+                <div>
+                    <label style="display: block; margin-bottom: 5px; font-size: 13px;">Password:</label>
+                    <input type="password" id="authPassword" required style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); background: #252634; color: #fff;">
+                </div>
+                
+                <button type="submit" id="authSubmitBtn" style="padding: 12px; background: var(--primary); color: #fff; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 5px;">Login</button>
+            </form>
+
+            <div style="text-align: center; margin-top: 15px; font-size: 13px;">
+                <span id="switchText" style="color: var(--text-muted);">Don't have an account?</span> 
+                <a href="#" id="toggleAuthMode" style="color: var(--primary); text-decoration: none; font-weight: 600; margin-left: 5px;">Register</a>
+            </div>
+
+            <div id="authErrorMsg" style="margin-top: 10px; color: #ff477e; text-align: center; font-size: 12px;"></div>
+        </div>
     </div>
 
     <!-- Hero Section -->
@@ -429,20 +530,8 @@
         </div>
     </section>
 
-    <!-- بخش Contact -->
-    <section class="contact-section" id="contact">
-        <div class="contact-box">
-            <h2 class="section-title" style="margin-bottom: 15px;">Contact Us</h2>
-            <p>Feel free to reach out to us through our social channels or WhatsApp for quick orders and inquiries.</p>
-            <div class="social-icons">
-                <a href="https://www.instagram.com/_elina_online_shop?igsh=NnIxMmQ1dmpndDM4&utm_source=qr" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://wa.me/93785738048" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-            </div>
-        </div>
-    </section>
-
-    <!-- بخش نظرات کاربران شیک در کارت مخصوص -->
-    <section class="contact-section" style="margin-top: 0; margin-bottom: 40px;">
+    <!-- بخش نظرات کاربران (بالا قرار گرفت) -->
+    <section class="contact-section" style="margin-bottom: 20px;">
         <div class="contact-box" style="text-align: left;">
             <h2 class="section-title" style="text-align: center; margin-bottom: 25px;">نظر خود را بنویسید</h2>
             
@@ -465,15 +554,28 @@
         </div>
     </section>
 
+    <!-- بخش Contact (حالا در پایین بخش نظرات قرار گرفت) -->
+    <section class="contact-section" id="contact" style="margin-top: 0; margin-bottom: 40px;">
+        <div class="contact-box">
+            <h2 class="section-title" style="margin-bottom: 15px;">Contact Us</h2>
+            <p>Feel free to reach out to us through our social channels or WhatsApp for quick orders and inquiries.</p>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/_elina_online_shop?igsh=NnIxMmQ1dmpndDM4&utm_source=qr" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://wa.me/93785738048" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
         <p>&copy; 2026 Elina Online Shop. All Rights Reserved.</p>
     </footer>
 
-    <!-- اسکریپت اتصال و ارسال به فایربیس دیتابیس شما -->
+    <!-- اسکریپت فایربیس (دیتابیس نظرات + سیستم احراز هویت Login واقعی) -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
         import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
         const firebaseConfig = {
           apiKey: "AIzaSyDsxkWyKqaTwf41CCwNAWqfaO3pMJPC75Y",
@@ -487,13 +589,14 @@
 
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app, "online-shop");
+        const auth = getAuth(app);
 
+        // مدیریت پنل نظرات
         const form = document.getElementById('reviewForm');
         const responseMessage = document.getElementById('responseMessage');
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
             const name = document.getElementById('userName').value;
             const message = document.getElementById('userMessage').value;
 
@@ -503,17 +606,10 @@
                     message: message,
                     createdAt: new Date()
                 });
-
-                // نمایش پیام موفقیت شیک در پایین فرم به جای پنجره alert
                 responseMessage.style.display = 'block';
                 responseMessage.textContent = 'نظر شما با موفقیت ثبت شد!';
                 form.reset();
-
-                // محو شدن پیام بعد از 4 ثانیه
-                setTimeout(() => {
-                    responseMessage.style.display = 'none';
-                }, 4000);
-
+                setTimeout(() => { responseMessage.style.display = 'none'; }, 4000);
             } catch (error) {
                 console.error("خطا در ارسال نظر: ", error);
                 responseMessage.style.display = 'block';
@@ -521,6 +617,91 @@
                 responseMessage.style.borderColor = '#e91e63';
                 responseMessage.style.color = '#e91e63';
                 responseMessage.textContent = 'خطا در ارسال: ' + error.message;
+            }
+        });
+
+        // بخش مدیریت Modal ورود و ثبت‌نام
+        const authTriggerBtn = document.getElementById('authTriggerBtn');
+        const authModal = document.getElementById('authModal');
+        const closeAuthModal = document.getElementById('closeAuthModal');
+        const authForm = document.getElementById('authForm');
+        const authMainTitle = document.getElementById('authMainTitle');
+        const authSubTitle = document.getElementById('authSubTitle');
+        const modalTitle = document.getElementById('modalTitle');
+        const authSubmitBtn = document.getElementById('authSubmitBtn');
+        const toggleAuthMode = document.getElementById('toggleAuthMode');
+        const switchText = document.getElementById('switchText');
+        const authErrorMsg = document.getElementById('authErrorMsg');
+
+        let isRegisterMode = false;
+
+        // باز و بسته کردن پنجره ورود
+        authTriggerBtn.addEventListener('click', () => {
+            const currentUser = auth.currentUser;
+            if (currentUser) {
+                if (confirm(`Logged in as: ${currentUser.email}\nDo you want to log out?`)) {
+                    signOut(auth).then(() => {
+                        alert('Logged out successfully.');
+                    });
+                }
+            } else {
+                authModal.style.display = 'flex';
+            }
+        });
+
+        closeAuthModal.addEventListener('click', () => {
+            authModal.style.display = 'none';
+            authErrorMsg.textContent = '';
+        });
+
+        // سوئیچ بین حالت ورود (Login) و ثبت‌نام (Register)
+        toggleAuthMode.addEventListener('click', (e) => {
+            e.preventDefault();
+            isRegisterMode = !isRegisterMode;
+            if (isRegisterMode) {
+                modalTitle.textContent = 'Create Account';
+                authSubmitBtn.textContent = 'Register';
+                switchText.textContent = 'Already have an account?';
+                toggleAuthMode.textContent = 'Login';
+            } else {
+                modalTitle.textContent = 'Account Login';
+                authSubmitBtn.textContent = 'Login';
+                switchText.textContent = "Don't have an account?";
+                toggleAuthMode.textContent = 'Register';
+            }
+            authErrorMsg.textContent = '';
+        });
+
+        // عملیات واقعی ثبت‌نام یا ورود در فایربیس
+        authForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('authEmail').value;
+            const password = document.getElementById('authPassword').value;
+            authErrorMsg.textContent = '';
+
+            try {
+                if (isRegisterMode) {
+                    await createUserWithEmailAndPassword(auth, email, password);
+                    alert('Account created successfully!');
+                } else {
+                    await signInWithEmailAndPassword(auth, email, password);
+                    alert('Logged in successfully!');
+                }
+                authModal.style.display = 'none';
+                authForm.reset();
+            } catch (error) {
+                authErrorMsg.textContent = error.message;
+            }
+        });
+
+        // بررسی وضعیت زنده کاربر (آیا لاگین هست یا خیر)
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                authMainTitle.textContent = user.email.split('@')[0];
+                authSubTitle.textContent = 'Logged In (Click to Logout)';
+            } else {
+                authMainTitle.textContent = 'Login / Register';
+                authSubTitle.textContent = 'Click to sign in';
             }
         });
     </script>
